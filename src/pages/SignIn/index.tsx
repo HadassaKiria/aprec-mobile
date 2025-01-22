@@ -1,24 +1,22 @@
 import React from 'react';
-import { 
-    View, 
-    StyleSheet,
-    Image,
- } from 'react-native';
+import { View, Image } from 'react-native';
+
+import { s } from "./styles"
 
 import { Button } from "../../components/button"
 import { InputLogin } from '../../components/input-login.tsx';
 
 export default function SignIn(){
     return(
-        <View style={styles.container}>
+        <View style={s.container}>
             <Image
-                style={styles.logo}
+                style={s.logo}
                 source={require('../../assets/logo.png')}
             />
 
             <InputLogin></InputLogin>
             <Button
-                title="Acessar" 
+                title="Entrar" 
                 onPress={() => ""}>
             </Button>
             <Button 
@@ -30,17 +28,3 @@ export default function SignIn(){
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFF'
-    },
-    logo:{
-        width: 250,
-        height: 250,
-        marginBottom: 18
-    }
-})

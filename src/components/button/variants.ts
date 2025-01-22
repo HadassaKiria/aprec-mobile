@@ -18,7 +18,7 @@ const buttonPrimary: ButtonStyle = {
     title: { color: colors.white[100] }
 };
 
-export const buttonOutline: ButtonStyle = {
+const buttonOutline: ButtonStyle = {
     button: {
         backgroundColor: "transparent",
         borderWidth: 2,

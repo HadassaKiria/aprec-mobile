@@ -8,7 +8,7 @@ export const s = StyleSheet.create({
 
     },
     containerInput:{
-        width: '98%',
+        width: '95%',
         height: 60,
         backgroundColor: colors.blue[50],
         marginBottom: 12,

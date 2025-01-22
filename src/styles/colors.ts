@@ -5,7 +5,8 @@ export const colors = {
     },
 
     blue: {
-        50: '#EDF4F9'
+        50: '#EDF4F9',
+        100: '#1457DF'
     },
     
     grey: {
