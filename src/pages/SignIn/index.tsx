@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Image } from 'react-native';
 
 import { s } from "./styles"
 
+import { AuthContext } from "../../contexts/AuthContext"
 import { Button } from "../../components/button"
 import { InputLogin } from '../../components/input-login.tsx';
 
+
 export default function SignIn(){
+    const { signIn } = useContext(AuthContext)
+
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
+
+    async function handleLogin(){
+        await signIn({ email, password })
+    }
+
     return(
         <View style={s.container}>
             <Image
@@ -14,10 +25,16 @@ export default function SignIn(){
                 source={require('../../assets/logo.png')}
             />
 
-            <InputLogin></InputLogin>
+            <InputLogin
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+            >
+            </InputLogin>
             <Button
                 title="Entrar" 
-                onPress={() => ""}>
+                onPress={handleLogin}>
             </Button>
             <Button 
                 title="Cadastrar" 
