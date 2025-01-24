@@ -33,10 +33,10 @@ export const AuthContext = createContext({} as AuthContextData)
 
 export function AuthProvider({ children }: AuthProviderProps){
     const [ user, setUser ] = useState<UserProps>({
-        id: 'BSK302KDIDA',
-        name: 'Liz Maria',
-        email: 'anne_spencer@gmail.com',
-        token: 'dkerj4urjifjiorr493i24i22fjh9848ru34fj'
+        id: '',
+        name: '',
+        email: '',
+        token: ''
     });
 
     const [ loadingAuth, setLoadingAuth ] = useState(false);
