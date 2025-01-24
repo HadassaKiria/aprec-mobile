@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Alert } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -20,7 +20,29 @@ export default function SignIn(){
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
 
+    const isValidEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
     async function handleLogin(){
+
+        if(!email.trim() || !password.trim()){
+            Alert.alert(
+                "Campos vazios",
+                "E-mail e senha devem ser preenchidos!"
+            )
+            return;
+        }
+
+        if(!isValidEmail(email)){
+            Alert.alert(
+                "E-mail inválido",
+                "Por favor, insira um e-mail válido."
+            )
+            return;
+        }
+
         await signIn({ email, password })
     }
 
