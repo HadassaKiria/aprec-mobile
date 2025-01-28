@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 
 import {View, ActivityIndicator} from 'react-native'
 
+import { colors } from "../styles/colors"
+
 import AppRoutes from './app.routes';
 import AuthRoutes from './auth.routes';
-
 import { AuthContext } from "../contexts/AuthContext"
 
 function Routes(){
@@ -15,12 +16,12 @@ function Routes(){
             <View
                 style={{
                     flex:1, 
-                    backgroundColor: '#F5f7fb', 
+                    backgroundColor: '#FFF',
                     justifyContent: 'center', 
                     alignItems: 'center' 
                     }}
             >
-                <ActivityIndicator  size={60} color="#DB7E21" />
+                <ActivityIndicator  size={60} color={colors.orange[500]} />
             </View>
         )
     }

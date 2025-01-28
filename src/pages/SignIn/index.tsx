@@ -13,6 +13,8 @@ export default function SignIn(){
 
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
+    const [ isLoginLoading, setIsLoginLoading ] = useState(false);
+    const [ isSignUpLoading, setIsSignUpLoading ] = useState(false);
 
     const isValidEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,7 +39,11 @@ export default function SignIn(){
             return;
         }
 
-        await signIn({ email, password })
+        setIsLoginLoading(true);
+
+        await signIn({ email, password });
+
+        setIsLoginLoading(false);
     }
 
     return(
@@ -56,13 +62,15 @@ export default function SignIn(){
             </InputLogin>
             <Button
                 title="Entrar" 
-                onPress={handleLogin}>
-            </Button>
+                onPress={handleLogin}
+                loading={isLoginLoading}
+            />
             <Button 
                 title="Cadastrar" 
                 onPress={() => ""}
-                variant="outline">
-            </Button>
+                variant="outline"
+                loading={isSignUpLoading}
+            />
 
         </View>
     )

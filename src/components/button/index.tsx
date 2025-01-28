@@ -18,10 +18,10 @@ interface ButtonProps {
     onPress: () => void;
     variant?: "primary" | "outline";
     style?: TouchableOpacityProps["style"];
+    loading: boolean;
 }
 
-function Button({ title, onPress, variant = "primary", style, }: ButtonProps){
-    const { loadingAuth } = useContext(AuthContext);
+function Button({ title, onPress, variant = "primary", style, loading = false }: ButtonProps){
     const buttonVariant = variants[variant];
 
     return(
@@ -29,9 +29,9 @@ function Button({ title, onPress, variant = "primary", style, }: ButtonProps){
             onPress={onPress}
             style={[s.container, buttonVariant.button, style]}
             activeOpacity={0.8}
-            disabled={loadingAuth}
+            disabled={loading}
         >
-            { loadingAuth ? (
+            { loading ? (
                 <ActivityIndicator size="small" color={colors.blue[50]} />
             ) : (
                 <Text style={[s.title, buttonVariant.title]}>{title}</Text>
