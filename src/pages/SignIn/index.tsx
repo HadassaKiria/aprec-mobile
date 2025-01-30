@@ -2,15 +2,14 @@ import React, { useState, useContext } from 'react';
 import { View, Image, Alert } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'; 
+import { StackParamsList } from '../../routes/auth.routes';
 
 import { s } from "./styles"
 
 import { AuthContext } from "../../contexts/AuthContext"
 import { Button } from "../../components/button"
 import { InputLogin } from '../../components/input-login.tsx';
-
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'; 
-import { StackParamsList } from '../../routes/auth.routes';
 
 export default function SignIn(){
     const navigation = useNavigation<NativeStackNavigationProp<StackParamsList>>();
@@ -81,7 +80,6 @@ export default function SignIn(){
                 variant="outline"
                 loading={isSignUpLoading}
             />
-
         </View>
     )
 }
