@@ -19,7 +19,8 @@ export const s = StyleSheet.create({
         color: colors.black[100]
     },
     inputIconContainer: {
-
+        width: '90%',
+        height: 60,
     },
     label:{
         fontSize: 15,
