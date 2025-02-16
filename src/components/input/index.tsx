@@ -7,12 +7,13 @@ import { s } from "./styles";
 type Props = {
     label: string;
     placeholder: string;
+    keyboardType: 'default' | 'numeric' | 'email-address',
     inputText: string;
     secureText?: boolean;
     onChangeText: (value: string) => void
 }
 
-function Input({ label, placeholder, inputText, secureText = false, onChangeText }: Props){
+function Input({ label, placeholder, keyboardType, inputText, secureText = false, onChangeText }: Props){
     const [ isSecure, setIsSecure ] = useState(secureText);
 
     return(
@@ -22,6 +23,7 @@ function Input({ label, placeholder, inputText, secureText = false, onChangeText
             <View style={s.inputContainer}>
                 <TextInput
                     placeholder={placeholder}
+                    keyboardType={keyboardType}
                     style={s.inputIconContainer}
                     value={inputText}
                     onChangeText={onChangeText}

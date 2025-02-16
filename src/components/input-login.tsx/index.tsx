@@ -18,6 +18,7 @@ export function InputLogin({ email, setEmail, password, setPassword }: Props){
             <Input
                 label='E-mail'
                 placeholder='Digite seu e-mail'
+                keyboardType='email-address'
                 inputText={email}
                 onChangeText={setEmail}
             />
@@ -25,6 +26,7 @@ export function InputLogin({ email, setEmail, password, setPassword }: Props){
             <Input
                 label='Senha'
                 placeholder='Digite sua senha'
+                keyboardType='default'
                 inputText={password}
                 secureText={true}
                 onChangeText={setPassword}

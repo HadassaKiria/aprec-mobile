@@ -58,13 +58,14 @@ export default function SignIn(){
                 setEmail={setEmail}
                 password={password}
                 setPassword={setPassword}
-            >
-            </InputLogin>
+            />
+
             <Button
                 title="Entrar" 
                 onPress={handleLogin}
                 loading={isLoginLoading}
             />
+            
             <Button 
                 title="Cadastrar" 
                 onPress={() => ""}
