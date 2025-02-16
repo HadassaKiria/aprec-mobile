@@ -26,6 +26,7 @@ function FormSignUp({ formData, handleInputChange }: FormSignUpProps){
             <Input
                 label='Nome'
                 placeholder='Digite seu nome'
+                keyboardType='default'
                 inputText={formData.firstName || "" }
                 onChangeText={(value) => handleInputChange("firstName", value)}
             />
@@ -33,6 +34,7 @@ function FormSignUp({ formData, handleInputChange }: FormSignUpProps){
             <Input
                 label='E-mail'
                 placeholder='Digite seu e-mail'
+                keyboardType='email-address'
                 inputText={formData.email || ""}
                 onChangeText={(value) => handleInputChange("email", value)}
             />
@@ -40,6 +42,7 @@ function FormSignUp({ formData, handleInputChange }: FormSignUpProps){
             <Input
                 label='Confirme seu e-mail'
                 placeholder='Digite novamente seu e-mail'
+                keyboardType='email-address'
                 inputText={formData.confirmEmail || ""}
                 onChangeText={(value) => handleInputChange("confirmEmail", value)}
             />
@@ -47,6 +50,7 @@ function FormSignUp({ formData, handleInputChange }: FormSignUpProps){
             <Input
                 label='Número(Whatsapp)'
                 placeholder='Digite seu número'
+                keyboardType='numeric'
                 inputText={formData.phoneNumber || ""}
                 onChangeText={(value) => handleInputChange("phoneNumber", value)}
             />
@@ -54,6 +58,7 @@ function FormSignUp({ formData, handleInputChange }: FormSignUpProps){
             <Input
                 label='Confirme seu número'
                 placeholder='Digite novamente seu número'
+                keyboardType='numeric'
                 inputText={formData.confirmPhoneNumber || ""}
                 onChangeText={(value) => handleInputChange("confirmPhoneNumber", value)}
             />
@@ -61,6 +66,7 @@ function FormSignUp({ formData, handleInputChange }: FormSignUpProps){
             <Input
                 label='Crie uma senha'
                 placeholder='Digite sua senha'
+                keyboardType='default'
                 inputText={formData.password || ""}
                 onChangeText={(value) => handleInputChange("password", value)}
             />
@@ -68,6 +74,7 @@ function FormSignUp({ formData, handleInputChange }: FormSignUpProps){
             <Input
                 label='Confirme sua senha'
                 placeholder='Digite novamente sua senha'
+                keyboardType='default'
                 inputText={formData.confirmPassword || ""}
                 onChangeText={(value) => handleInputChange("confirmPassword", value)}
             />        
