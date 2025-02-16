@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, Platform, TouchableOpacity, TextInput } from "react-native";
+import { View, Platform, TouchableOpacity, TextInput } from "react-native";
 
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { Picker } from "@react-native-picker/picker"; 
 
 import { s } from "./styles"
@@ -19,7 +19,7 @@ type CustomPickerProps = {
 
 
 function CustomPicker({ options }: CustomPickerProps) {
-    const [selectedValue, setSelectedValue] = useState<string>("");
+    const [selectedValue, setSelectedValue] = useState<string>('');
 
     const handleValueChange = (value: string) => {
         setSelectedValue(value);
@@ -33,6 +33,7 @@ function CustomPicker({ options }: CustomPickerProps) {
                     selectedValue={selectedValue}
                     onValueChange={handleValueChange}
                 >
+                    <Picker.Item label="" value=""/>
                     {options.map((option, index) => (
                         <Picker.Item key={index} value={option.value} label={option.label} />
                     ))}
@@ -43,11 +44,11 @@ function CustomPicker({ options }: CustomPickerProps) {
 }
 
 function CustomPickerDate(){
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState<Date | null>(null);
     const [show, setShow] = useState(false);
 
     const handleOnChange = (event: any, selectedDate?: Date) => {
-        if (selectedDate) {
+        if(selectedDate){
             setDate(selectedDate);
         }
         setShow(false);
@@ -57,17 +58,17 @@ function CustomPickerDate(){
         <View style={s.containerDate}>
             <TouchableOpacity onPress={() => setShow(true)} style={s.inputWrapper}>
                 <TextInput
-                    value={date.toLocaleDateString()}
+                    value={date?.toLocaleDateString()}
                     editable={false}
                     style={s.inputContainer}
                 />
-                <Ionicons name="calendar-outline" size={24} style={s.iconDate} />
+                <Ionicons name='calendar-outline' size={24} style={s.iconDate} />
             </TouchableOpacity>
 
             {show && (
                 <DateTimePicker
-                    value={date}
-                    mode="date"
+                    value={date ?? new Date()}
+                    mode='date'
                     display={Platform.OS === 'ios' ? 'spinner' : 'default'}
                     onChange={handleOnChange}
                 />

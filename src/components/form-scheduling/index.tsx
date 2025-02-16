@@ -22,6 +22,13 @@ const doctors = [
     {label: "Dr. Richard Webber", value: "Dr. Richard Webber"}
 ]
 
+const horários = [
+    {label: "08:00", value: "08:00"},
+    {label: "09:00", value: "09:00"},
+    {label: "14:00", value: "14:00"},
+    {label: "17:00", value: "17:00"}
+]
+
 function FormScheduling() {
     return(
         <View style={s.container}>
@@ -33,6 +40,9 @@ function FormScheduling() {
 
             <Text style={s.label}>Dia do atendimento</Text>
             <CustomPickerDate></CustomPickerDate>
+
+            <Text style={s.label}>Horário</Text>
+            <CustomPicker options={horários}></CustomPicker>
         </View>
     )
 }

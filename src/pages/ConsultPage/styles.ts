@@ -5,7 +5,7 @@ export const s = StyleSheet.create({
     container:{
         flex:1,
         alignItems: "center",
-        backgroundColor: '#FFF'
+        backgroundColor: colors.white[100]
     },
 
     title: {

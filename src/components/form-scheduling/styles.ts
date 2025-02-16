@@ -5,7 +5,8 @@ export const s = StyleSheet.create({
     container:{
     width: "100%",
     alignItems: "center",
-    backgroundColor: "#fff"
+    backgroundColor: colors.white[100],
+    marginBottom: 52
     },
 
     label: {

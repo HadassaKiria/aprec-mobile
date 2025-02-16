@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {View, Text, TouchableOpacity} from "react-native"
 
 import { useNavigation } from '@react-navigation/native';
@@ -10,10 +10,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../styles/colors"
 import { s } from "./styles";
 import { FormScheduling } from "../../components/form-scheduling"; 
+import { Button } from "../../components/button";
 
 
 export default function ConsultPage(){
     const navigation = useNavigation<NativeStackNavigationProp<StackParamsList>>();
+
+    const [ isLoading, setIsLoading ] = useState(false);
+    
     
     return(
         <View style={s.container}>
@@ -25,6 +29,11 @@ export default function ConsultPage(){
 
             <FormScheduling></FormScheduling>
 
+            <Button
+                title="Agendar"
+                onPress={() => {}}
+                loading={isLoading}
+            />
         </View>
     )
 }
