@@ -4,10 +4,9 @@ import { View, Image } from 'react-native';
 import { s } from "./styles"
 
 import { Button } from "../../components/button"
-import { InputLogin } from '../../components/input-login.tsx';
 import { InputProfile } from '../../components/input-profile';
 
-export default function SignIn(){
+export default function ProFile(){
     return(
         <View style={s.container}>
             <Image
