@@ -1,14 +1,19 @@
 import React, { useState, useContext } from 'react';
 import { View, Image, Alert } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'; 
+import { StackParamsList } from '../../routes/auth.routes';
+
 import { s } from "./styles"
 
 import { AuthContext } from "../../contexts/AuthContext"
 import { Button } from "../../components/button"
 import { InputLogin } from '../../components/input-login.tsx';
 
-
 export default function SignIn(){
+    const navigation = useNavigation<NativeStackNavigationProp<StackParamsList>>();
+
     const { signIn } = useContext(AuthContext)
 
     const [ email, setEmail ] = useState('');
@@ -46,6 +51,10 @@ export default function SignIn(){
         setIsLoginLoading(false);
     }
 
+    async function handleSignUp(){
+        navigation.navigate('SignUp')
+    }
+
     return(
         <View style={s.container}>
             <Image
@@ -68,11 +77,10 @@ export default function SignIn(){
             
             <Button 
                 title="Cadastrar" 
-                onPress={() => ""}
+                onPress={handleSignUp}
                 variant="outline"
                 loading={isSignUpLoading}
             />
-
         </View>
     )
 }
