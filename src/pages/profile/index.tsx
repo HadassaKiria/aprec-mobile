@@ -10,6 +10,7 @@ export default function ProFile(){
     return(
         <View style={s.container}>
             <Image
+                style={s.logo}
                 source={require('../../assets/logo.png')}
             />
 
