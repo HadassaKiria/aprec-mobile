@@ -1,12 +1,60 @@
-import React from 'react';
-import { View, Image } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, Image, Alert } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'; 
+import { StackParamsList } from '../../routes/auth.routes';
 
 import { s } from "./styles"
 
+import { AuthContext } from "../../contexts/AuthContext"
 import { Button } from "../../components/button"
 import { InputLogin } from '../../components/input-login.tsx';
 
 export default function SignIn(){
+    const navigation = useNavigation<NativeStackNavigationProp<StackParamsList>>();
+
+    const { signIn } = useContext(AuthContext)
+
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ isLoginLoading, setIsLoginLoading ] = useState(false);
+    const [ isSignUpLoading, setIsSignUpLoading ] = useState(false);
+
+    const isValidEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    async function handleLogin(){
+
+        if(!email.trim() || !password.trim()){
+            Alert.alert(
+                "Campos vazios",
+                "E-mail e senha devem ser preenchidos!"
+            )
+            return;
+        }
+
+        if(!isValidEmail(email)){
+            Alert.alert(
+                "E-mail inválido",
+                "Por favor, insira um e-mail válido."
+            )
+            return;
+        }
+
+        setIsLoginLoading(true);
+
+        await signIn({ email, password });
+
+        setIsLoginLoading(false);
+    }
+
+    async function handleSignUp(){
+        navigation.navigate('SignUp')
+    }
+
     return(
         <View style={s.container}>
             <Image
@@ -14,17 +62,25 @@ export default function SignIn(){
                 source={require('../../assets/logo.png')}
             />
 
-            <InputLogin></InputLogin>
+            <InputLogin
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+            />
+
             <Button
                 title="Entrar" 
-                onPress={() => ""}>
-            </Button>
+                onPress={handleLogin}
+                loading={isLoginLoading}
+            />
+            
             <Button 
                 title="Cadastrar" 
-                onPress={() => ""}
-                variant="outline">
-            </Button>
-
+                onPress={handleSignUp}
+                variant="outline"
+                loading={isSignUpLoading}
+            />
         </View>
     )
 }

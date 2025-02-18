@@ -13,7 +13,7 @@ export const s = StyleSheet.create({
         fontFamily: fontFamily.regular,
         textAlign: "right",
         marginRight: "4%",
-        marginBottom: 20,
+        marginBottom: 60,
         color: colors.blue[100],
         textDecorationLine: 'underline'
     }

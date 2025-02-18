@@ -1,13 +1,20 @@
-import { View, StatusBar } from 'react-native';
+import React from "react"
+import { StatusBar } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native'
+
 import Routes from './src/routes'
-import RoutasBar from './src/routes/navbar.routes';
+
+import { AuthProvider } from "./src/contexts/AuthContext"
+
 export default function App() {
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor="#C7731E" barStyle="light-content" translucent={true} />
-      <RoutasBar/>
+      <AuthProvider>
+        <StatusBar backgroundColor="#C7731E" barStyle="light-content" transLucent={false} />
+        <Routes/>
+      </AuthProvider>
+
     </NavigationContainer>
   );
 }
