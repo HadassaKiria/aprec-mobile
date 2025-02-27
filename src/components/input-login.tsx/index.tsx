@@ -1,5 +1,6 @@
-import React from "react"
+import React from "react"        
 import { View, Text, TouchableOpacity } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 
 import { Input } from "../input"
 import { s } from "./styles"
@@ -32,9 +33,9 @@ export function InputLogin({ email, setEmail, password, setPassword }: Props){
                 onChangeText={setPassword}
             />
 
-            <TouchableOpacity onPress={() => console.log("Redirecionar para recuperação de senha")}>
+            <TouchableOpacity onPress={() => navigation.navigate("Recovery")}>
                 <Text style={s.forgotPassword}>Esqueci minha senha</Text>
             </TouchableOpacity>
         </View>
-    )
+    );
 }
