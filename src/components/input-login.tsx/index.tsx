@@ -1,16 +1,37 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React from "react"        
+import { View, Text, TouchableOpacity } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 
-import { Input } from "../input";
-import { s } from "./styles";
+import { Input } from "../input"
+import { s } from "./styles"
 
-export function InputLogin() {
-    const navigation = useNavigation();
+type Props = {
+    email: string;
+    setEmail: (value: string) => void;
+    password: string;
+    setPassword: (value: string) => void;
+}
 
-    return (
+export function InputLogin({ email, setEmail, password, setPassword }: Props){
+    
+    return(
         <View style={s.container}>
-            <Input label='E-mail' placeholder='Digite seu e-mail' />
-            <Input label='Senha' placeholder='Digite sua senha' secureTextEntry />
+            <Input
+                label='E-mail'
+                placeholder='Digite seu e-mail'
+                keyboardType='email-address'
+                inputText={email}
+                onChangeText={setEmail}
+            />
+
+            <Input
+                label='Senha'
+                placeholder='Digite sua senha'
+                keyboardType='default'
+                inputText={password}
+                secureText={true}
+                onChangeText={setPassword}
+            />
 
             <TouchableOpacity onPress={() => navigation.navigate("Recovery")}>
                 <Text style={s.forgotPassword}>Esqueci minha senha</Text>
@@ -18,5 +39,3 @@ export function InputLogin() {
         </View>
     );
 }
-
-export { s };
